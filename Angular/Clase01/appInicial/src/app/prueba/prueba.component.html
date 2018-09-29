@@ -1,0 +1,24 @@
+<p>
+	{{fecha}}
+</p>
+<button [disabled]="activo">Mostrar Correo</button>
+<button (click)="cambiar()">Activar</button>
+
+<input type="text" placeholder="Ingresar nombre" (input)="nuevoNombre($event.target.value)">
+<br>
+<button (click)="agregar()">Agregar</button>
+<table *ngIf="activo">
+	<tr>
+		<th></th>
+		<th>Nombre</th>
+		<th>Acción</th>
+	</tr>
+
+	<tr *ngFor="let alumno of listaAlumnos; let indice = index">
+		<td>{{indice}}</td>
+		<td>{{alumno}}</td>
+		<td>
+			<button (click)="borrar(indice)">Borrar</button>
+		</td>
+	</tr>
+</table>
