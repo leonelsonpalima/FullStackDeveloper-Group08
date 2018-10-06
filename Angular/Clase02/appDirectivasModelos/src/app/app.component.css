@@ -1,0 +1,17 @@
+.ponerBordesGruesos {
+	border-width: 10px;
+	border-style: solid;
+}
+
+.ponerBordesDelgados {
+	border-width: 5px;
+	border-style: solid;
+}
+
+.ponerBordesRojos {
+	border-color:red
+}
+
+.ponerBordesRosados {
+	border-color:pink
+}

@@ -24,7 +24,7 @@
 			</form>
 		</div>
 		<div class="col-12 col-sm-6" *ngIf="personas.length>0; else NoHayData">
-			<table class="table table-hover table-striped">
+			<table class="table">
 				<thead>
 					<tr>
 						<th>Persona</th>
@@ -32,7 +32,12 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr *ngFor="let persona of personas">
+					<tr *ngFor="let persona of personas" [ngStyle]="{color: obtenerColor(), backgroundColor: obtenerColorFondo()}"
+					 [ngClass]="{
+						 ponerBordesGruesos: (persona.nombre.length>6 ? true: false),
+						 ponerBordesDelgados: (persona.nombre.length<=6 ? true: false),
+						 ponerBordesRojos: (persona.nombre.length>6 ? true: false),
+						 ponerBordesRosados: (persona.nombre.length<=6 ? true: false)}">
 						<td>{{persona.nombre}}</td>
 						<td>
 							<img [src]="persona.foto" alt="" class="img-thumbnail" style="max-height: 100px">

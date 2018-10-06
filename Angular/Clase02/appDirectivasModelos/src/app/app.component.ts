@@ -50,4 +50,16 @@ export class AppComponent {
 		//console.log(evento.target.files[0])
 	}
 
+	obtenerColor(): string {
+		return Math.random() > .5 ? 'gray' : 'black'
+	}
+
+	obtenerColorFondo(): string {
+		return Math.random() > .5 ? 'black' : 'gray'
+	}
+
+	obtenerGrosorLetra(): string {
+		return Math.random() > .5 ? 'bold' : 'normal'
+	}
+
 }

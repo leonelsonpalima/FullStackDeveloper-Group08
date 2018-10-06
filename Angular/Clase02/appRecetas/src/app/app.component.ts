@@ -8,10 +8,10 @@ import { Component, ViewChild, ElementRef } from '@angular/core';
 export class AppComponent {
 	recetas: Array<{ titulo: string, descripcion: string, palabrasClave, foto: string }>
 
-	@ViewChild("titulo") titulo: ElementRef
-	@ViewChild("descripcion") descripcion: ElementRef
-	@ViewChild("foto") foto: ElementRef
-	@ViewChild("palabrasClave") palabrasClave: ElementRef
+	titulo: string
+	descripcion: string
+	foto: string
+	palabrasClave: string
 
 	constructor() {
 		this.recetas = this.leerLS()
@@ -20,17 +20,17 @@ export class AppComponent {
 	agregar() {
 		if (!this.recetas) this.recetas = []
 
-		const titulo = this.titulo.nativeElement.value.trim()
-		const descripcion = this.descripcion.nativeElement.value.trim()
-		const palabrasClave = this.palabrasClave.nativeElement.value.trim()
-		const foto = this.foto.nativeElement.value.trim()
+		const titulo = this.titulo
+		const descripcion = this.descripcion
+		const palabrasClave = this.palabrasClave
+		const foto = this.foto
 
 		if (titulo != "" && descripcion != "" && foto != "" && palabrasClave != "") {
 			this.recetas.push({ titulo, descripcion, palabrasClave, foto })
-			this.titulo.nativeElement.value = ""
-			this.descripcion.nativeElement.value = ""
-			this.foto.nativeElement.value = ""
-			this.palabrasClave.nativeElement.value = ""
+			this.titulo = ""
+			this.descripcion = ""
+			this.foto = ""
+			this.palabrasClave = ""
 			this.escribirLS()
 		}
 	}
