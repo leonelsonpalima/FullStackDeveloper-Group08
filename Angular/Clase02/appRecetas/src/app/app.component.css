@@ -1,0 +1,10 @@
+.claseInclinada {
+	font-style: italic;
+	font-family: Arial;
+	background-color: rgba(200, 200, 0, .5)
+}
+
+.claseNormal {
+	font-style: normal;
+	font-family: Verdana;
+}
