@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { AlertaOk } from './alerta-ok.component';
 import { AlertaMal } from './alerta-mal.component';
+import { FormsModule } from "@angular/forms"
 
 @NgModule({
 	declarations: [
@@ -12,7 +13,8 @@ import { AlertaMal } from './alerta-mal.component';
 		AlertaMal
 	],
 	imports: [
-		BrowserModule
+		BrowserModule,
+		FormsModule
 	],
 	providers: [],
 	bootstrap: [AppComponent]

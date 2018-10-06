@@ -7,9 +7,8 @@ import { Component, ElementRef, ViewChild } from '@angular/core';
 })
 export class AppComponent {
 	//BD
-
-	@ViewChild("foto") foto: ElementRef
-	@ViewChild("nombre") nombre: ElementRef
+	nombre: string
+	foto: string
 
 	personas: Array<{ nombre: string, foto: string }> = []
 	fotoFile: File
@@ -24,13 +23,10 @@ export class AppComponent {
 
 	//agregar(nombre: string, foto: string) {
 	agregar() {
-		const nombre = this.nombre.nativeElement.value
-		const foto = this.foto.nativeElement.value
-
-		if (nombre.trim() != "" && foto.trim() != "") {
-			this.personas.push({ nombre, foto })
-			this.nombre.nativeElement.value = ""
-			this.foto.nativeElement.value = ""
+		if (this.nombre.trim() != "" && this.foto.trim() != "") {
+			this.personas.push({ nombre: this.nombre, foto: this.foto })
+			this.nombre = ""
+			this.foto = ""
 
 			localStorage.setItem("personas", JSON.stringify(this.personas))
 		}
