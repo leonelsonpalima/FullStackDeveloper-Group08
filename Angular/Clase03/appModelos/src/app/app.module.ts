@@ -6,6 +6,7 @@ import { FormsModule } from "@angular/forms";
 import { FormAgregarComponent } from './receta/form-agregar/form-agregar.component';
 import { ListadoComponent } from './receta/listado/listado.component';
 import { FormEditarComponent } from './receta/form-editar/form-editar.component'
+import { RecetaService } from './servicios/receta.service';
 
 @NgModule({
 	declarations: [
@@ -18,7 +19,9 @@ import { FormEditarComponent } from './receta/form-editar/form-editar.component'
 		BrowserModule,
 		FormsModule
 	],
-	providers: [],
+	providers: [
+		RecetaService
+	],
 	bootstrap: [AppComponent]
 })
 export class AppModule { }

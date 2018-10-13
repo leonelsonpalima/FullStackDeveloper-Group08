@@ -1,16 +1,16 @@
 <div class="container">
 	<div class="row">
 
-		<div class="col-12 col-sm-6" *ngIf="!recetaEditando">
-			<app-form-agregar (onAgregando)="agregar($event)"></app-form-agregar>
+		<div class="col-12 col-sm-6" *ngIf="!editando">
+			<app-form-agregar></app-form-agregar>
 		</div>
 
-		<div class="col-12 col-sm-6" *ngIf="!recetaEditando">
-			<app-listado [listaRecetas]="recetas" (onEliminando)="eliminar($event)" (onEditando)="editar($event)"></app-listado>
+		<div class="col-12 col-sm-6" *ngIf="!editando">
+			<app-listado></app-listado>
 		</div>
 
-		<div class="col-12 col-sm-6" *ngIf="recetaEditando">
-			<app-form-editar [edicion]="recetaEditando" (onActualizando)="guardar($event)" (onCancelando)="cancelar()"></app-form-editar>
+		<div class="col-12 col-sm-6" *ngIf="editando">
+			<app-form-editar [indice]="indiceRecetaEditando"></app-form-editar>
 		</div>
 
 
