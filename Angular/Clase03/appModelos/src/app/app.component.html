@@ -6,7 +6,11 @@
 		</div>
 
 		<div class="col-12 col-sm-6" *ngIf="!recetaEditando">
-			<app-listado [listaRecetas]="recetas" (onEliminando)="eliminar($event)"></app-listado>
+			<app-listado [listaRecetas]="recetas" (onEliminando)="eliminar($event)" (onEditando)="editar($event)"></app-listado>
+		</div>
+
+		<div class="col-12 col-sm-6" *ngIf="recetaEditando">
+			<app-form-editar [edicion]="recetaEditando" (onActualizando)="guardar($event)" (onCancelando)="cancelar()"></app-form-editar>
 		</div>
 
 

@@ -33,8 +33,13 @@ export class AppComponent implements OnInit {
 		this.recetaEditando = this.receta.detallar(indice)
 	}
 
-	guardar() {
-		this.receta.actualizar(this.indiceRecetaEditando, this.recetaEditando)
+	guardar(recetaActualizada) {
+		this.receta.actualizar(this.indiceRecetaEditando, recetaActualizada)
+		this.recetaEditando = undefined
+	}
+
+	cancelar(evento) {
+		console.log(evento)
 		this.recetaEditando = undefined
 	}
 

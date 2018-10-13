@@ -9,6 +9,8 @@ export class ListadoComponent implements OnInit {
 
 	@Input("listaRecetas") recetas: Array<any>
 	@Output() onEliminando: EventEmitter<number> = new EventEmitter<number>()
+	@Output() onEditando: EventEmitter<number> = new EventEmitter<number>()
+
 
 	constructor() { }
 
@@ -20,6 +22,10 @@ export class ListadoComponent implements OnInit {
 		if (confirm("¿Está seguro?")) {
 			this.onEliminando.emit(indice)
 		}
+	}
+
+	editar(indice) {
+		this.onEditando.emit(indice)
 	}
 
 }
