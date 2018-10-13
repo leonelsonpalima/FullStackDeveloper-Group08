@@ -29,13 +29,17 @@
 				<thead>
 					<tr>
 						<th>Recetas</th>
+						<th></th>
 					</tr>
 				</thead>
 				<tbody>
-					<tr *ngFor="let receta of recetas">
+					<tr *ngFor="let receta of recetas; let indice = index">
 						<td>
 							<h2>{{receta.titulo}}</h2>
 							<em>{{receta.descripcion}}</em>
+						</td>
+						<td>
+							<button class="btn btn-danger" (click)="eliminar(indice)">Borrar</button>
 						</td>
 					</tr>
 				</tbody>

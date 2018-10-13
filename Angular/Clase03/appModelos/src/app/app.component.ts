@@ -27,6 +27,12 @@ export class AppComponent implements OnInit {
 		this.reset()
 	}
 
+	eliminar(indice: number) {
+		if (confirm("¿Está seguro?")) {
+			this.receta.eliminar(indice)
+		}
+	}
+
 	reset() {
 		this.titulo = ""
 		this.descripcion = ""
