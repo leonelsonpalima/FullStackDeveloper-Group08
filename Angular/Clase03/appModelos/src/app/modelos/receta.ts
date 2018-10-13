@@ -11,7 +11,7 @@ export class Receta {
 		this.recetas.push({ titulo, descripcion, ingredientes, instrucciones, foto })
 	}
 
-	listar() {
+	listar(): Array<any> {
 		return this.recetas
 	}
 

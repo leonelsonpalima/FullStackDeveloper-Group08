@@ -20,12 +20,26 @@
 					<input type="text" placeholder="Foto" class="form-control" [(ngModel)]="foto" name="foto">
 				</div>
 				<div class="form-group">
-					<button type="button" (click)="agregar()">Agregar</button>
+					<button type="button" (click)="agregar()" class="btn btn-success">Agregar</button>
 				</div>
 			</form>
 		</div>
 		<div class="col-12 col-sm-6">
-
+			<table class="table">
+				<thead>
+					<tr>
+						<th>Recetas</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr *ngFor="let receta of recetas">
+						<td>
+							<h2>{{receta.titulo}}</h2>
+							<em>{{receta.descripcion}}</em>
+						</td>
+					</tr>
+				</tbody>
+			</table>
 		</div>
 	</div>
 </div>

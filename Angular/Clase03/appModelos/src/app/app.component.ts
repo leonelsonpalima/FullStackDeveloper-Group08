@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Receta } from './modelos/receta';
 
 @Component({
@@ -6,19 +6,32 @@ import { Receta } from './modelos/receta';
 	templateUrl: './app.component.html',
 	styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
 	titulo: string
 	descripcion: string
 	ingredientes: string
 	instrucciones: string
 	foto: string
 
-	recetas: Receta[] = []
+	receta: Receta = new Receta()
+
+	recetas: Receta[]
+
+	ngOnInit() {
+		this.recetas = this.receta.listar()
+	}
 
 	agregar() {
-		const objReceta: Receta = new Receta(this.titulo, this.descripcion, this.ingredientes, this.instrucciones, this.foto)
+		this.receta.agregar(this.titulo, this.descripcion, this.ingredientes, this.instrucciones, this.foto)
 
-		this.recetas.push(objReceta)
-		console.log(this.recetas)
+		this.reset()
+	}
+
+	reset() {
+		this.titulo = ""
+		this.descripcion = ""
+		this.ingredientes = ""
+		this.instrucciones = ""
+		this.foto = ""
 	}
 }
