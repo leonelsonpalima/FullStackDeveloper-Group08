@@ -7,11 +7,7 @@ import { Receta } from './modelos/receta';
 	styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-	titulo: string
-	descripcion: string
-	ingredientes: string
-	instrucciones: string
-	foto: string
+
 
 	receta: Receta = new Receta()
 
@@ -24,16 +20,12 @@ export class AppComponent implements OnInit {
 		this.recetas = this.receta.listar()
 	}
 
-	agregar() {
-		this.receta.agregar(this.titulo, this.descripcion, this.ingredientes, this.instrucciones, this.foto)
-
-		this.reset()
+	agregar(recetaItem) {
+		this.receta.agregar(recetaItem.titulo, recetaItem.descripcion, recetaItem.ingredientes, recetaItem.instrucciones, recetaItem.foto)
 	}
 
 	eliminar(indice: number) {
-		if (confirm("¿Está seguro?")) {
-			this.receta.eliminar(indice)
-		}
+		this.receta.eliminar(indice)
 	}
 
 	editar(indice) {
@@ -46,11 +38,4 @@ export class AppComponent implements OnInit {
 		this.recetaEditando = undefined
 	}
 
-	reset() {
-		this.titulo = ""
-		this.descripcion = ""
-		this.ingredientes = ""
-		this.instrucciones = ""
-		this.foto = ""
-	}
 }
