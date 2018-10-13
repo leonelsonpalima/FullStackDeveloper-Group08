@@ -15,11 +15,15 @@ export class Receta {
 		return this.recetas
 	}
 
-	detallar(indice: number) {
-		return this.recetas[indice]
+	detallar(indice: number): any {
+		return Object.assign({}, this.recetas[indice])
 	}
 
 	eliminar(indice: number) {
 		this.recetas.splice(indice, 1)
+	}
+
+	actualizar(indice, receta) {
+		this.recetas[indice] = receta
 	}
 }

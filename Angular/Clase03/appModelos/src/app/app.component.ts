@@ -17,6 +17,9 @@ export class AppComponent implements OnInit {
 
 	recetas: Receta[]
 
+	recetaEditando: Receta
+	indiceRecetaEditando: number
+
 	ngOnInit() {
 		this.recetas = this.receta.listar()
 	}
@@ -31,6 +34,16 @@ export class AppComponent implements OnInit {
 		if (confirm("¿Está seguro?")) {
 			this.receta.eliminar(indice)
 		}
+	}
+
+	editar(indice) {
+		this.indiceRecetaEditando = indice
+		this.recetaEditando = this.receta.detallar(indice)
+	}
+
+	guardar() {
+		this.receta.actualizar(this.indiceRecetaEditando, this.recetaEditando)
+		this.recetaEditando = undefined
 	}
 
 	reset() {

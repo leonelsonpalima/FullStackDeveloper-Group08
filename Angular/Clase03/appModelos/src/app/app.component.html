@@ -1,6 +1,6 @@
 <div class="container">
 	<div class="row">
-		<div class="col-12 col-sm-6">
+		<div class="col-12 col-sm-6" *ngIf="!recetaEditando">
 			<form>
 				<div class="form-group">
 					<input type="text" class="form-control" placeholder="Título" [(ngModel)]="titulo" name="titulo">
@@ -24,7 +24,34 @@
 				</div>
 			</form>
 		</div>
-		<div class="col-12 col-sm-6">
+
+		<div class="col-12 col-sm-6" *ngIf="recetaEditando">
+			<form>
+				<div class="form-group">
+					<input type="text" class="form-control" placeholder="Título" [(ngModel)]="recetaEditando.titulo" name="titulo">
+				</div>
+				<div class="form-group">
+					<input type="text" placeholder="Descripción" class="form-control" [(ngModel)]="recetaEditando.descripcion" name="descripcion">
+				</div>
+				<div class="form-group">
+					<textarea name="" id="" cols="30" rows="10" placeholder="Ingredientes" class="form-control" [(ngModel)]="recetaEditando.ingredientes"
+					 name="ingredientes"></textarea>
+				</div>
+				<div class="form-group">
+					<textarea name="" id="" cols="30" rows="10" placeholder="Instrucciones" class="form-control" [(ngModel)]="recetaEditando.instrucciones"
+					 name="instrucciones"></textarea>
+				</div>
+				<div class="form-group">
+					<input type="text" placeholder="Foto" class="form-control" [(ngModel)]="recetaEditando.foto" name="foto">
+				</div>
+				<div class="form-group">
+					<button type="button" (click)="guardar()" class="btn btn-success">Guardar</button>
+					<button class="btn btn-warning" (click)="recetaEditando=undefined">Cancelar</button>
+				</div>
+			</form>
+		</div>
+
+		<div class="col-12 col-sm-6" *ngIf="!recetaEditando">
 			<table class="table">
 				<thead>
 					<tr>
@@ -40,6 +67,7 @@
 						</td>
 						<td>
 							<button class="btn btn-danger" (click)="eliminar(indice)">Borrar</button>
+							<button (click)="editar(indice)" class="btn btn-warning">Editar</button>
 						</td>
 					</tr>
 				</tbody>
