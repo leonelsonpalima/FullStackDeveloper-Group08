@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { RecetaService } from '../../servicios/receta.service';
 import { IReceta } from '../../modelos/receta.interface';
+import { LogService } from '../../servicios/log.service';
 
 @Component({
 	selector: 'app-listado',

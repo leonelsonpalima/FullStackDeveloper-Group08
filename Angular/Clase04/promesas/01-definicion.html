@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+</head>
+
+<body>
+
+	<script>
+		const promesa = new Promise((resolve, reject) => {
+			fetch("http://calapi.inadiutorium.cz/api/v0/en/calendars/default/hoy")
+				.then(resp => resp.json())
+				.then(resp => {
+					console.table(resp)
+					resolve(resp)
+				})
+				.catch(
+					error => reject(error)
+				)
+		})
+
+		console.log("Esto está después de la defición de la promesa")
+
+		promesa
+			.then(
+				mensaje => console.log(mensaje)
+			)
+			.catch(
+				error => console.log(error)
+			)
+
+	</script>
+
+
+</body>
+
+</html>

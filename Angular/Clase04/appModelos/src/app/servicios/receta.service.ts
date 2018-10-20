@@ -1,5 +1,6 @@
 import { EventEmitter, Injectable } from "@angular/core";
 import { IReceta } from "../modelos/receta.interface";
+import { LogService } from "./log.service";
 
 @Injectable()
 export class RecetaService {
@@ -7,11 +8,14 @@ export class RecetaService {
 
 	private recetas: Array<IReceta> = []
 
+	constructor(private logService: LogService) { }
+
 	agregar(receta: IReceta) {
 		this.recetas.push(receta)
 	}
 
 	listar(): Array<IReceta> {
+		this.logService.log("Listado generado desde el servicio")
 		return this.recetas
 	}
 

@@ -7,6 +7,7 @@ import { FormAgregarComponent } from './receta/form-agregar/form-agregar.compone
 import { ListadoComponent } from './receta/listado/listado.component';
 import { FormEditarComponent } from './receta/form-editar/form-editar.component'
 import { RecetaService } from './servicios/receta.service';
+import { LogService } from './servicios/log.service';
 
 @NgModule({
 	declarations: [
