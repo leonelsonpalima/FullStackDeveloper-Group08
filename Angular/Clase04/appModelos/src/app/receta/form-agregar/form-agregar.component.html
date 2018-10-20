@@ -1,0 +1,22 @@
+<form>
+	<div class="form-group">
+		<input type="text" class="form-control" placeholder="Título" [(ngModel)]="receta.titulo" name="titulo">
+	</div>
+	<div class="form-group">
+		<input type="text" placeholder="Descripción" class="form-control" [(ngModel)]="receta.descripcion" name="descripcion">
+	</div>
+	<div class="form-group">
+		<textarea name="" id="" cols="30" rows="10" placeholder="Ingredientes" class="form-control" [(ngModel)]="receta.ingredientes"
+		 name="ingredientes"></textarea>
+	</div>
+	<div class="form-group">
+		<textarea name="" id="" cols="30" rows="10" placeholder="Instrucciones" class="form-control" [(ngModel)]="receta.instrucciones"
+		 name="instrucciones"></textarea>
+	</div>
+	<div class="form-group">
+		<input type="text" placeholder="Foto" class="form-control" [(ngModel)]="receta.foto" name="foto">
+	</div>
+	<div class="form-group">
+		<button type="button" (click)="agregar()" class="btn btn-success">Agregar</button>
+	</div>
+</form>

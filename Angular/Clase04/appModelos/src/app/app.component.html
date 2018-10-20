@@ -1,0 +1,18 @@
+<div class="container">
+	<div class="row">
+
+		<div class="col-12 col-sm-6" *ngIf="!editando">
+			<app-form-agregar></app-form-agregar>
+		</div>
+
+		<div class="col-12 col-sm-6" *ngIf="!editando">
+			<app-listado></app-listado>
+		</div>
+
+		<div class="col-12 col-sm-6" *ngIf="editando">
+			<app-form-editar [indice]="indiceRecetaEditando"></app-form-editar>
+		</div>
+
+
+	</div>
+</div>
