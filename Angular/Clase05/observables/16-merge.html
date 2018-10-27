@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+	<style>
+		body {
+			margin-top: 70px;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col-12 text-center">
+				<input type="text" id="inputPaginacion" class="form-control" placeholder="Página" value="1">
+				<input type="text" id="inputOrdenacion" class="form-control" placeholder="Ordenación" value="">
+				<input type="text" id="inputBusqueda" class="form-control" placeholder="Búsqueda" value="">
+			</div>
+		</div>
+	</div>
+
+
+	<script src="https://unpkg.com/rxjs@6.3.3/bundles/rxjs.umd.min.js"></script>
+
+	<script>
+		const { fromEvent, merge, of } = rxjs
+		const { pluck, switchMap, distinctUntilChanged, debounceTime } = rxjs.operators
+
+		const inputPaginacion = document.getElementById("inputPaginacion")
+		const inputOrdenacion = document.getElementById("inputOrdenacion")
+		const inputBusqueda = document.getElementById("inputBusqueda")
+
+		const obs1 = fromEvent(inputPaginacion, "input")
+		const obs2 = fromEvent(inputOrdenacion, "input")
+		const obs3 = fromEvent(inputBusqueda, "input")
+			.pipe(
+				pluck("target", "value"),
+				debounceTime(500),
+				distinctUntilChanged()
+			)
+
+		const llamadaAApiRest = (pagina, orden, busqueda) => {
+			console.log("pagina", pagina)
+			console.log("orden", orden)
+			console.log("busqueda", busqueda)
+
+			return of(Math.random())
+		}
+
+		merge(obs1, obs2, obs3)
+			.pipe(
+				//pluck("target")
+				switchMap(() => {
+					return llamadaAApiRest(inputPaginacion.value, inputOrdenacion.value, inputBusqueda.value)
+				})
+			)
+			.subscribe(
+				data => console.log(data)
+			)
+
+
+
+
+	</script>
+
+
+
+
+</body>
+
+</html>
