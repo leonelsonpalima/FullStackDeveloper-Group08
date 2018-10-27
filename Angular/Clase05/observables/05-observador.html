@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+	<style>
+		body {
+			margin-top: 70px;
+		}
+	</style>
+</head>
+
+<body>
+
+
+	<script src="https://unpkg.com/rxjs@6.3.3/bundles/rxjs.umd.min.js"></script>
+
+	<script>
+
+		const { Observable } = rxjs
+
+		const observable = Observable.create(
+			observador => {
+
+				setTimeout(() => {
+					observador.next([{ nombre: "Carlos2" }, { nombre: "Janet2" }])
+				}, 2000)
+
+				setTimeout(() => {
+					observador.next([{ nombre: "Carlos" }, { nombre: "Janet" }])
+				}, 4000)
+
+				setTimeout(() => {
+					observador.next([{ nombre: "Carmen" }, { nombre: "Cynthia" }])
+				}, 6000)
+
+				setTimeout(() => {
+					observador.error({ status: 500, message: "network failed" })
+				}, 7000)
+
+				setTimeout(() => {
+					observador.next([{ nombre: "José" }, { nombre: "Alondra" }])
+				}, 9000)
+
+				setTimeout(() => {
+					observador.complete()
+				}, 5000)
+
+			}
+		)
+
+		observable
+			.subscribe(
+				data => console.log(data),
+				error => console.log(error),
+				() => console.log("Operación completa")
+			)
+
+		setTimeout(() => {
+			console.log("creación del segundo suscriptor")
+			observable
+				.subscribe(
+					data => console.log("información del segundo suscriptor", data)
+				)
+		}, 6000)
+
+	</script>
+
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+	<style>
+		body {
+			margin-top: 70px;
+		}
+	</style>
+</head>
+
+<body>
+
+
+	<script src="https://unpkg.com/rxjs@6.3.3/bundles/rxjs.umd.min.js"></script>
+
+	<script>
+		const { Subject } = rxjs
+
+		//Servicio
+		const subject = new Subject()
+
+		//Subscriptor en app.component
+		subject.subscribe(
+			estado => console.log("en app", estado)
+		)
+
+		//Subscriptor en header.component
+		subject.subscribe(
+			estado => console.log("en header", estado)
+		)
+
+		//También desde el servicio
+		subject.next(true)
+
+		setTimeout(() => {
+			subject.next(false)
+		}, 5000)
+
+
+	</script>
+
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+	<style>
+		body {
+			margin-top: 70px;
+		}
+	</style>
+</head>
+
+<body>
+
+
+	<script src="https://unpkg.com/rxjs@6.3.3/bundles/rxjs.umd.min.js"></script>
+
+	<script>
+		const { of } = rxjs
+		const { reduce, scan } = rxjs.operators
+
+		//of(10, 10, 10, 10, 10, 10, 10, 10, 10, 10)
+		of({ titulo: "angular" }, { titulo: "node" }, { titulo: "angular" }, { titulo: "js" }, { titulo: "node" }, { titulo: "node" })
+			.pipe(
+				reduce(
+					(total, valor) => {
+						if (total[valor.titulo]) {
+							total[valor.titulo] += 1
+						} else {
+							total[valor.titulo] = 1
+						}
+
+						return total
+					},
+					{})
+				//scan((total, valor) => total + valor, 0)
+			)
+			.subscribe(
+				data => console.log(data)
+			)
+
+
+	</script>
+
+
+
+
+</body>
+
+</html>
