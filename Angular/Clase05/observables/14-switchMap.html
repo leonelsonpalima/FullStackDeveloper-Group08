@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+	<style>
+		body {
+			margin-top: 70px;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col-12 text-center">
+				<button class="btn btn-success">Clic</button>
+			</div>
+		</div>
+	</div>
+
+
+	<script src="https://unpkg.com/rxjs@6.3.3/bundles/rxjs.umd.min.js"></script>
+
+	<script>
+		const { fromEvent, interval } = rxjs
+		const { switchMap } = rxjs.operators
+
+		const button = document.querySelector("button")
+
+		fromEvent(button, "click")
+			.pipe(
+				switchMap(() => interval(1000))
+			)
+			.subscribe(
+				data => console.log(data)
+			)
+
+
+
+
+
+	</script>
+
+
+
+
+</body>
+
+</html>
